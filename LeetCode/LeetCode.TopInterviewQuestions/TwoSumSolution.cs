@@ -27,6 +27,40 @@ namespace LeetCode.TopInterviewQuestions
 
         public int[] TwoSum(int[] nums, int target)
         {
+            int leftLimit, rightLimit;
+            int arrayLength = nums.Length;
+            var sortedNums = (int[]) nums.Clone();
+            Array.Sort(sortedNums);
+            if (target >= 0)
+            {
+                leftLimit = target - sortedNums[arrayLength - 1];
+                rightLimit = sortedNums[arrayLength - 1];
+            }
+            else 
+            {
+                leftLimit = sortedNums[0];
+                rightLimit = target - sortedNums[0];
+            }
+            var indexCandidates = new List<int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i] >= leftLimit && nums[i] <= rightLimit)
+                {
+                    foreach (var indexCandidate in indexCandidates)
+                    {
+                        if (nums[indexCandidate] + nums[i] == target)
+                        {
+                            return new int[] { indexCandidate, i };
+                        }
+                    }
+                    indexCandidates.Add(i);
+                }
+            }
+            return new int[] { };
+        }
+
+        public int[] TwoSumSeconApproach(int[] nums, int target)
+        {
             var minCandidateValue = 0;
             var indexCandidates = new List<int>();
             for (int i = 0; i < nums.Length; i++)
@@ -95,6 +129,18 @@ namespace LeetCode.TopInterviewQuestions
                 case 2:
                     nums = new int[] { -1, -2, -3, -4, -5 };
                     target = -8;
+                    break;
+                case 3:
+                    nums = new int[] { 2, 7, 11, 15 };
+                    target = 9;
+                    break;
+                case 4:
+                    nums = new int[] { 3, 2, 4 };
+                    target = 6;
+                    break;
+                case 5:
+                    nums = new int[] { 0, 3, -3, 4, -1 };
+                    target = -1;
                     break;
                 default:
                     break;
