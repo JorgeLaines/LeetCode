@@ -1,4 +1,5 @@
 ﻿using LeetCode.Common;
+using System.Text;
 
 namespace LeetCode.TopInterviewQuestions
 {
@@ -14,6 +15,7 @@ namespace LeetCode.TopInterviewQuestions
 
         public void Execute()
         {
+            var newNum = FindComplement(5);
             var result = TwoSum(nums, target);
             if (result.Count() != 0)
             {
@@ -23,6 +25,23 @@ namespace LeetCode.TopInterviewQuestions
             { 
                 Console.WriteLine("[]");
             }
+        }
+
+        public int FindComplement(int num)
+        {
+            StringBuilder sb = new StringBuilder();
+            var result = Convert.ToString(num, 2);
+            for(int i = 0; i < result.Length; i++)
+            {
+                if (result[i] == '0') {
+                    sb.Append('1');
+                }
+                else
+                {
+                    sb.Append('0');
+                }
+            }
+            return Convert.ToInt32(sb.ToString(), 2);
         }
 
         public int[] TwoSum(int[] nums, int target)
