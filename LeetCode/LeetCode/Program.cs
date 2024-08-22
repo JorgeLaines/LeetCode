@@ -6,7 +6,7 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            var solution = new FindComplementSolution();
+            var solution = new FirstMissingPositiveSolution();
             solution.SetDefaultExample();
             solution.Execute();
             Console.ReadLine();
