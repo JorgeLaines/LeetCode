@@ -6,8 +6,8 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            var solution = new TwoSumSolution();
-            solution.SetDefaultExample(5);
+            var solution = new FindComplementSolution();
+            solution.SetDefaultExample();
             solution.Execute();
             Console.ReadLine();
         }
