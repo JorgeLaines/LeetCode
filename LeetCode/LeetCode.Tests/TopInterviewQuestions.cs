@@ -24,6 +24,7 @@ namespace LeetCode.Tests
         [TestCase("-1/2+1/2", "0/1")]
         [TestCase("-1/2+1/2+1/3", "1/3")]
         [TestCase("1/3-1/2", "-1/6")]
+        [TestCase("7/2+2/3-3/4", "41/12")]
         public void FractionAdditionTests(string expression, string expected)
         {
             var solution = new FractionAdditionSolution();

@@ -59,7 +59,7 @@
 
             if (numerator == 0) return "0/1";
 
-            int secondDenominator = CalculateCommonDenominator(commonDenominator, numerator);
+            int secondDenominator = CalculateCommonDenominator(commonDenominator, numerator, true);
 
             numerator = numerator / secondDenominator;
             commonDenominator = commonDenominator / secondDenominator;
@@ -67,33 +67,29 @@
             return $"{numerator}/{commonDenominator}";
         }
 
-        private int CalculateCommonDenominator(int commonDenominator, int candidate)
+        private int CalculateCommonDenominator(int commonDenominator, int candidate, bool minimum = false)
         {
             if(commonDenominator == 0) return candidate;
-            if (candidate / commonDenominator == 0) return commonDenominator;
 
-            int[] primeNumbers = new int[] { 2, 3, 5, 7 };
+            int[] primeNumbers = new int[] { 2, 3, 5, 7, 11, 13 };
             int newCommonDenominator = 1;
             bool commonDenominatorHit;
 
-            while (commonDenominator > 1 && candidate > 1) 
+            for (int i = 0; i < primeNumbers.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                commonDenominatorHit = true;
+                while (commonDenominatorHit && (commonDenominator > 1 || candidate > 1))
                 {
-                    commonDenominatorHit = true;
-                    while (commonDenominatorHit)
+                    if ((!minimum && (commonDenominator % primeNumbers[i] == 0 || candidate % primeNumbers[i] == 0)) ||
+                        (minimum && (commonDenominator % primeNumbers[i] == 0 && candidate % primeNumbers[i] == 0)))
                     {
-                        if(commonDenominator % primeNumbers[i] == 0 ||
-                            candidate % primeNumbers[i] == 0)
-                        {
-                            newCommonDenominator = newCommonDenominator * primeNumbers[i];
-                            commonDenominator = commonDenominator % primeNumbers[i] == 0 ? commonDenominator / primeNumbers[i] : commonDenominator;
-                            candidate = candidate % primeNumbers[i] == 0 ? candidate / primeNumbers[i] : candidate;
-                        }
-                        else
-                        {
-                            commonDenominatorHit = false;
-                        }
+                        newCommonDenominator = newCommonDenominator * primeNumbers[i];
+                        commonDenominator = commonDenominator % primeNumbers[i] == 0 ? commonDenominator / primeNumbers[i] : commonDenominator;
+                        candidate = candidate % primeNumbers[i] == 0 ? candidate / primeNumbers[i] : candidate;
+                    }
+                    else
+                    {
+                        commonDenominatorHit = false;
                     }
                 }
             }
