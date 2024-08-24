@@ -20,5 +20,16 @@ namespace LeetCode.Tests
             var result = solution.FirstMissingPositive(nums);
             Assert.That(result, Is.EqualTo(expected));
         }
+
+        [TestCase("-1/2+1/2", "0/1")]
+        [TestCase("-1/2+1/2+1/3", "1/3")]
+        [TestCase("1/3-1/2", "-1/6")]
+        public void FractionAdditionTests(string expression, string expected)
+        {
+            var solution = new FractionAdditionSolution();
+            var result = solution.FractionAddition(expression);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
     }
 }
