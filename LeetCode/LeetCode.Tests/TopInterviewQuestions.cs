@@ -32,5 +32,15 @@ namespace LeetCode.Tests
             Assert.That(result, Is.EqualTo(expected));
         }
 
+        [TestCase(new int[] { 4, 2, 1, 3 }, new int[] { 1, 2, 3, 4 })]
+        [TestCase(new int[] { -1, 5, 3, 4, 0 }, new int[] { -1, 0, 3, 4, 5 })]
+        public void InsertionSortListTests(int[] unordered, int[] expected)
+        {
+            var solution = new InsertionSortListSolution();
+            var unorderedNodes = solution.ConvertArrayToListNode(unordered);
+            var result = solution.InsertionSortList(unorderedNodes);
+            var resultArray = solution.ConvertListNodeToArray(result, unordered.Length);
+            Assert.That(resultArray, Is.EqualTo(expected));
+        }
     }
 }
