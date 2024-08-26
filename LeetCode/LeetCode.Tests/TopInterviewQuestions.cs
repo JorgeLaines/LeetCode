@@ -42,5 +42,14 @@ namespace LeetCode.Tests
             var resultArray = solution.ConvertListNodeToArray(result, unordered.Length);
             Assert.That(resultArray, Is.EqualTo(expected));
         }
+
+        [TestCase(new int[] { 0, 0 }, new int[] { 1, 1 }, new int[] { 1, 0 }, new int[] { 0, 1 }, true)]
+        [TestCase(new int[] { 0, 1 }, new int[] { 1, 1 }, new int[] { 1, 1 }, new int[] { 1, 0 }, false)]
+        public void ValidSquareTests(int[] p1, int[] p2, int[] p3, int[] p4, bool expected)
+        {
+            var solution = new ValidSquareSolution();
+            var result = solution.ValidSquare(p1, p2, p3, p4);
+            Assert.That(result, Is.EqualTo(expected));
+        }
     }
 }
