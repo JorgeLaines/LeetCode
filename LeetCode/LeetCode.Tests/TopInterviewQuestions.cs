@@ -51,5 +51,16 @@ namespace LeetCode.Tests
             var result = solution.ValidSquare(p1, p2, p3, p4);
             Assert.That(result, Is.EqualTo(expected));
         }
+
+        [TestCase(new int[] { 0, 0 }, new int[] { 1, 1 }, new int[] { 1, 0 }, new int[] { 0, 1 }, true)]
+        [TestCase(new int[] { 0, 0 }, new int[] { 1, 1 }, new int[] { 1, 0 }, new int[] { 0, 12 }, false)]
+        [TestCase(new int[] { 1, 0 }, new int[] { -1, 0 }, new int[] { 0, 1 }, new int[] { 0, -1 }, true)]
+        [TestCase(new int[] { 0, 1 }, new int[] { 1, 1 }, new int[] { 1, 1 }, new int[] { 1, 0 }, false)]
+        public void ValidSquare2Tests(int[] p1, int[] p2, int[] p3, int[] p4, bool expected)
+        {
+            var solution = new ValidSquare2Solution();
+            var result = solution.ValidSquare(p1, p2, p3, p4);
+            Assert.That(result, Is.EqualTo(expected));
+        }
     }
 }
