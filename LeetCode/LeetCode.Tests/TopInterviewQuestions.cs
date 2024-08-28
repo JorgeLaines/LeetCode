@@ -62,5 +62,16 @@ namespace LeetCode.Tests
             var result = solution.ValidSquare(p1, p2, p3, p4);
             Assert.That(result, Is.EqualTo(expected));
         }
+
+        [TestCase(33, new int[] { 1, 3, 3, 1 })]
+        [TestCase(3, new int[] { 1, 3, 3, 1 })]
+        [TestCase(0, new int[] { 1 })]
+        [TestCase(1, new int[] { 1, 1 })]
+        public void PascalsTriangle2Tests(int rowIndex, IList<int> expected)
+        {
+            var solution = new PascalsTriangle2Solution();
+            var result = solution.GetRow(rowIndex);
+            Assert.That(result, Is.EqualTo(expected));
+        }
     }
 }
