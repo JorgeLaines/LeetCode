@@ -3,7 +3,7 @@
     public class PascalsTriangle2Solution
     {
         // https://leetcode.com/problems/pascals-triangle-ii
-        // TODO: Make a faster using just one array
+        // TODO: Make a faster using just one array and work mathematically with the indexes
 
         private Dictionary<int, int> cache = new Dictionary<int, int>();
 

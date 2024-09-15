@@ -8,7 +8,16 @@ namespace LeetCode.Tests
         public void Setup()
         {
         }
-        
+
+        [TestCase("eleetminicoworoep", 13)]
+        [TestCase("leetcodeisgreat", 5)]
+        [TestCase("bcbcbc", 6)]
+        public void FindTheLongestSubstringTests(string input, int expected) {
+            var solution = new FindTheLongestSubstringSolution();
+            var result = solution.FindTheLongestSubstring(input);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
         [TestCase(new int[] { 1, 2, 0 }, 3)]
         [TestCase(new int[] { 3, 4, -1, 1 }, 2)]
         [TestCase(new int[] { 7, 8, 9, 11, 12 }, 1)]
@@ -63,7 +72,6 @@ namespace LeetCode.Tests
             Assert.That(result, Is.EqualTo(expected));
         }
 
-        [TestCase(33, new int[] { 1, 3, 3, 1 })]
         [TestCase(3, new int[] { 1, 3, 3, 1 })]
         [TestCase(0, new int[] { 1 })]
         [TestCase(1, new int[] { 1, 1 })]
@@ -71,6 +79,26 @@ namespace LeetCode.Tests
         {
             var solution = new PascalsTriangle2Solution();
             var result = solution.GetRow(rowIndex);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [TestCase(0, new int[] { 1 })]
+        [TestCase(1, new int[] { 1, 1 })]
+        [TestCase(3, new int[] { 1, 3, 3, 1 })]
+        public void PascalsTriangle3Tests(int rowIndex, IList<int> expected)
+        {
+            var solution = new PascalsTriangle3Solution();
+            var result = solution.GetRow_TotalArray(rowIndex);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [TestCase(0, new int[] { 1 })]
+        [TestCase(1, new int[] { 1, 1 })]
+        [TestCase(3, new int[] { 1, 3, 3, 1 })]
+        public void PascalsTriangle3Tests_Half(int rowIndex, IList<int> expected)
+        {
+            var solution = new PascalsTriangle3Solution();
+            var result = solution.GetRow_HalfArray(rowIndex);
             Assert.That(result, Is.EqualTo(expected));
         }
     }
